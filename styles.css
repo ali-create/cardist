@@ -153,3 +153,7 @@ body {
 
   background-color: var(--black);
 }
+
+.settingsOpen {
+cursor: pointer;
+}
