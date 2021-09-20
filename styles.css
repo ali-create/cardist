@@ -169,3 +169,8 @@ body {
 .notransition {
   animation: rotation 2s infinite linear;
 }
+.mute {
+  position: absolute;
+  top: 10px;
+  margin-left: 50px;
+}
