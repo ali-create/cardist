@@ -78,7 +78,7 @@ setTimeout(function () {
     pointLose.volume = volume.value / 100;
     pointGain.volume = volume.value / 100;
     useFail.volume = volume.value / 100;
-    console.log(Boolean(data[0]));
+//     console.log(Boolean(data[0]));
 
     if (Boolean(data[0])) {
       darkMode.click();
