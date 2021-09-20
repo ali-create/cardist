@@ -33,7 +33,7 @@ body {
   background-color: rgb(184, 255, 184);
   padding: 10px;
   width: 100px;
-  font-size: 15px;
+  font-size: 17px;
 }
 .cardsPlayer {
   width: 150px;
@@ -115,6 +115,8 @@ body {
   z-index: 2;
 }
 .settingsInside {
+  z-index: 4;
+  background-color: var(--white);
   top: 40px;
   appearance: none;
   -webkit-appearance: none;
@@ -129,6 +131,9 @@ body {
   height: fit-content;
 }
 .summary {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   font-size: 20px;
@@ -153,7 +158,14 @@ body {
 
   background-color: var(--black);
 }
-
-.openSettings {
-cursor: pointer;
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.notransition {
+  animation: rotation 2s infinite linear;
 }
