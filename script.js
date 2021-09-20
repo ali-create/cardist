@@ -1,3 +1,21 @@
+const darkMode = document.querySelector(".darkMode");
+const volume = document.querySelector(".volume");
+const settingsInside = document.querySelector(".settingsInside");
+
+let settingsOpen = false;
+let darkModeCheck = darkMode.checked;
+darkMode.addEventListener("click", function () {
+  if (darkModeCheck) {
+    document.documentElement.style.setProperty("--black", "black");
+    document.documentElement.style.setProperty("--white", "white");
+    darkModeCheck = !darkModeCheck;
+  } else {
+    document.documentElement.style.setProperty("--white", "black");
+    document.documentElement.style.setProperty("--black", "white");
+    darkModeCheck = !darkModeCheck;
+  }
+});
+
 let playerCards = document.querySelectorAll(".card");
 const board = document.querySelector(".board");
 const sidePlayer = document.querySelector(".cardsPlayer");
@@ -8,6 +26,12 @@ const overlay = document.querySelector(".overlay");
 const pointGain = document.querySelector(".pointGain");
 const pointLose = document.querySelector(".pointLose");
 const useFail = document.querySelector(".useFail");
+
+volume.addEventListener("pointerup", function () {
+  pointLose.volume = volume.value / 100;
+  pointGain.volume = volume.value / 100;
+  useFail.volume = volume.value / 100;
+});
 
 const checkForWin = function () {
   if (document.querySelectorAll(".card").length === 0) {
@@ -225,3 +249,9 @@ const test = function (cur) {
   // console.log(cur.getAttribute("cardValue"));
   cur.parentNode.remove();
 };
+
+document.querySelector(".openSettings").addEventListener("click", function () {
+  settingsInside.classList.toggle("hidden");
+});
+
+document.querySelector(".openSettings").click();
