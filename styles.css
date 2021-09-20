@@ -154,6 +154,6 @@ body {
   background-color: var(--black);
 }
 
-.settingsOpen {
+.openSettings {
 cursor: pointer;
 }
