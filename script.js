@@ -8,24 +8,18 @@ darkMode.addEventListener("click", function () {
     document.documentElement.style.setProperty("--black", "black");
     document.documentElement.style.setProperty("--white", "white");
     darkModeCheck = !darkModeCheck;
+    document.cookie = darkModeCheck + " " + volume.value;
   } else {
     document.documentElement.style.setProperty("--white", "black");
     document.documentElement.style.setProperty("--black", "white");
     darkModeCheck = !darkModeCheck;
+    document.cookie = darkModeCheck + " " + volume.value;
   }
 });
+
 let darkModeCheck = darkMode.checked;
+
 const volume = document.querySelector(".volume");
-if (document.cookie.length > 1) {
-  const data = document.cookie.split(" ");
-  volume.value = data[1];
-  pointLose.volume = volume.value / 100;
-  pointGain.volume = volume.value / 100;
-  useFail.volume = volume.value / 100;
-  if (Boolean(data[0])) {
-    darkMode.click();
-  }
-}
 
 const random = function (min, max) {
   return Math.trunc(Math.random() * (max - min + 1) + min);
@@ -55,6 +49,7 @@ volume.addEventListener("pointerup", function () {
   pointLose.volume = volume.value / 100;
   pointGain.volume = volume.value / 100;
   useFail.volume = volume.value / 100;
+  document.cookie = darkModeCheck + " " + volume.value;
 });
 
 const checkForWin = function () {
@@ -73,8 +68,23 @@ const checkForWin = function () {
 
 playerCards.forEach(function (cur) {
   cur.childNodes[3].textContent = cur.getAttribute("cardValue");
-  // console.log((cur.childNodes[3].textContent = cur.getAttribute("cardValue")));
+  //
 });
+
+setTimeout(function () {
+  if (document.cookie.length > 1) {
+    const data = document.cookie.split(" ");
+    volume.value = data[1];
+    pointLose.volume = volume.value / 100;
+    pointGain.volume = volume.value / 100;
+    useFail.volume = volume.value / 100;
+    console.log(Boolean(data[0]));
+
+    if (Boolean(data[0])) {
+      darkMode.click();
+    }
+  }
+}, 10);
 
 playerCards.forEach(function (cur) {
   cur.addEventListener("click", function () {
@@ -90,7 +100,7 @@ playerCards.forEach(function (cur) {
     });
 
     const curRandom = random(1, cardNum.length);
-    // console.log(cardNum[curRandom - 1]);
+    //
 
     const AIchoice = cardNum[curRandom - 1];
 
@@ -163,12 +173,12 @@ playerCards.forEach(function (cur) {
       document.querySelectorAll(".useCard").forEach(function (cur) {
         cur.disabled = false;
       });
-      // console.log(aiCards[curRandom]);
+      //
       AIcards[curRandom - 1].remove();
 
       checkForWin();
     }, 3000);
-    // console.log(cur.getAttribute("cardValue"));
+    //
     cur.remove();
   });
 });
@@ -181,7 +191,7 @@ const test = function (cur) {
     useFail.play();
   }
 
-  // console.log(cur.parentNode);
+  //
   const AIcards = document.querySelectorAll(".card--AI");
   const cardNum = [];
   AIcards.forEach(function (cur) {
@@ -189,7 +199,7 @@ const test = function (cur) {
   });
 
   const curRandom = random(1, cardNum.length);
-  // console.log(cardNum[curRandom - 1]);
+  //
 
   const AIchoice = cardNum[curRandom - 1];
 
@@ -264,11 +274,11 @@ const test = function (cur) {
     document.querySelectorAll(".useCard").forEach(function (cur) {
       cur.disabled = false;
     });
-    // console.log(aiCards[curRandom]);
+    //
     AIcards[curRandom - 1].remove();
     checkForWin();
   }, 3000);
-  // console.log(cur.getAttribute("cardValue"));
+  //
   cur.parentNode.remove();
 };
 
@@ -288,4 +298,15 @@ playerCards.forEach(function (cur) {
 
 playerCards.forEach(function (cur) {
   cur.childNodes[3].textContent = cur.getAttribute("cardValue");
+});
+
+const mute = document.querySelector(".mute");
+
+volume.addEventListener("input", function () {
+  if (volume.value == 0) {
+    mute.classList.remove("hidden");
+  }
+  if (volume.value != 0) {
+    mute.classList.add("hidden");
+  }
 });
