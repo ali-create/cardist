@@ -1,0 +1,98 @@
+.card,
+.card--AI {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  height: 150px;
+  width: 100px;
+  border: black 3px solid;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.use {
+  width: 90px;
+  border: black 3px solid;
+  border-radius: 0.3rem;
+  background-color: lime;
+}
+.cardsPlayer {
+  width: 150px;
+  height: 565px;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px 10px 10px 10px;
+  border: black 3px solid;
+
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.cardValueText {
+  font-size: 50px;
+}
+.board {
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  width: 300px;
+  height: 550px;
+  position: absolute;
+
+  left: 50%;
+  border: black 3px solid;
+  border-radius: 1rem;
+  transform: translate(-50%, -100%);
+}
+.cardsAI {
+  width: 150px;
+  height: 565px;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px 10px 10px 10px;
+  border: black 3px solid;
+
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  direction: rtl;
+  left: 99.2%;
+  position: absolute;
+  transform: translate(-100%, -99.2%);
+}
+.win {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 120px;
+  height: 90px;
+  left: 50%;
+  top: 50%;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: black 3px solid;
+  border-radius: 1rem;
+  z-index: 3;
+}
+.win p {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.win a {
+  cursor: pointer;
+}
+.hidden {
+  visibility: hidden;
+}
+.overlay {
+  width: 5000px;
+  height: 5000px;
+  position: fixed;
+  z-index: 2;
+}
